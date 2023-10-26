@@ -6,5 +6,7 @@
 
 ## Content Discovery
 1- ```ffuf -w urls.txt:URL -w fuzz.txt:FUZZ -u URL/FUZZ -ac -c -of json -o fuzz.json```
+
 Output : url     status        length
+
 2- ```cat fuzz.json | jq -r '.results[].url +" "+ (.results[].status|tostring) + " " + (.results[].length|tostring)```
