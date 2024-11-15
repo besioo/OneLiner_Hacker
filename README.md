@@ -10,3 +10,16 @@
 Output : url     status        length
 
 2- ```cat fuzz.json | jq -r '.results[].url +" "+ (.results[].status|tostring) + " " + (.results[].length|tostring)```
+
+## BruteForce Basic Auth
+Add this function to your ~/.profile
+```
+generate_basicauth () {
+    for user in `cat $1`; do for pass in `cat $2`; do echo -n "$user:$pass"| base64 ; done; done
+}
+```
+
+Use ffuf
+```
+generate_basicauth users.txt passes.txt https://target.com/protected
+```
