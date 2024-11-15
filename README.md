@@ -21,5 +21,5 @@ generate_basicauth () {
 
 Use ffuf
 ```
-generate_basicauth users.txt passes.txt https://target.com/protected
+generate_basicauth users.txt passes.txt | ffuf -u https://target.com/protected -w - -H "Authorization: Basic FUZZ"
 ```
